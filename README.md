@@ -29,6 +29,3 @@ To run the Note-Taking App on your local machine, follow these steps:
 
     ```bash
     open index.html
-
-
-
