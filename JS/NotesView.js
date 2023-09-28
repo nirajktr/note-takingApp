@@ -60,4 +60,35 @@ export default class NotesView {
         `;
     }
     
+    // Update the list of notes displayed in the sidebar
+    updateNoteList(notes) {
+        const notesListContainer = this.root.querySelector(".notes__list");
+
+        // Clear the existing list
+        notesListContainer.innerHTML = "";
+
+        // Generate and append HTML for each note item
+        for (const note of notes) {
+            const html = this._createListItemHTML(note.id, note.title, note.body, new Date(note.updated));
+
+            notesListContainer.insertAdjacentHTML("beforeend", html);
+        }
+
+        // Attach click and double-click event handlers to note items
+        notesListContainer.querySelectorAll(".notes__list-item").forEach(noteListItem => {
+            noteListItem.addEventListener("click", () => {
+                // Pass selected note ID to the provided event handler
+                this.onNoteSelect(noteListItem.dataset.noteId);
+            });
+
+            noteListItem.addEventListener("dblclick", () => {
+                const doDelete = confirm("Are you sure you want to delete this note?");
+
+                if (doDelete) {
+                    // Pass note ID to the provided event handler for deletion
+                    this.onNoteDelete(noteListItem.dataset.noteId);
+                }
+            });
+        });
+    }
 }
