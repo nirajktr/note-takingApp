@@ -91,4 +91,17 @@ export default class NotesView {
             });
         });
     }
+
+    // Update the active note's title and body in the preview area
+    updateActiveNote(note) {
+        this.root.querySelector(".notes__title").value = note.title;
+        this.root.querySelector(".notes__body").value = note.body;
+
+        // Remove the "selected" style from all note items and add it to the active note
+        this.root.querySelectorAll(".notes__list-item").forEach(noteListItem => {
+            noteListItem.classList.remove("notes__list-item--selected");
+        });
+
+        this.root.querySelector(`.notes__list-item[data-note-id="${note.id}"]`).classList.add("notes__list-item--selected");
+    }
 }
