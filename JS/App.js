@@ -1,5 +1,5 @@
 import NotesView from "./notesView.js";
-import NotesAPI from "./NotesAPI.js";
+import NotesAPI from "./notesAPI.js";
 
 // Main class
 export default class App {
