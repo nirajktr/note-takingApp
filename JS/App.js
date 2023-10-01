@@ -1,4 +1,4 @@
-import NotesView from "./NotesView.js";
+import NotesView from "./notesView.js";
 import NotesAPI from "./NotesAPI.js";
 
 // Main class
