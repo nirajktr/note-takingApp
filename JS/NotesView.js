@@ -30,7 +30,7 @@ export default class NotesView {
 
         [inpTitle, inpBody].forEach(inputField => {
             inputField.addEventListener("blur", () => {
-                // Extract and send updated title and body to provided event handler
+                // Extract and send updated title and body to the provided event handler
                 const updatedTitle = inpTitle.value.trim();
                 const updatedBody = inpBody.value.trim();
 
@@ -59,7 +59,7 @@ export default class NotesView {
             </div>
         `;
     }
-    
+
     // Update the list of notes displayed in the sidebar
     updateNoteList(notes) {
         const notesListContainer = this.root.querySelector(".notes__list");
@@ -103,5 +103,10 @@ export default class NotesView {
         });
 
         this.root.querySelector(`.notes__list-item[data-note-id="${note.id}"]`).classList.add("notes__list-item--selected");
+    }
+
+    // Toggle the visibility of the note preview area
+    updateNotePreviewVisibility(visible) {
+        this.root.querySelector(".notes__preview").style.visibility = visible ? "visible" : "hidden";
     }
 }
